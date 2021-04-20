@@ -6,16 +6,19 @@ Example: updating the status of a variable once a week, while acting on said var
 Usage:
 
 ``` Python
-from function_scheduler import tick_scheduler, execute_every
+from function_scheduler import Scheduler
 
-@execute_every(minutes = 5)
+scheduler = Scheduler()
+
 def update():
 	#performs an update every 5 mintues
+
+scheduler.execute(update, minutes = 5)
 
 def main():
 	while True:
 		try:
-			tick_scheduler()
+			scheduler.tick()
 		except Exception:
 			break
 
